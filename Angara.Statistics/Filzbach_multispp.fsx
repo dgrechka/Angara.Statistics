@@ -26,10 +26,10 @@ do
     // learning from the data:
     // unknown model parameters
 
-    let parameters = Parameters()
-                        .Add("lambda", numsp, 100.0, 0.01, 200.0, isLog=true) // vector
-                        .Add("lambda_mean", 100.0, 0.01, 200.0, isLog=true) // single value
-                        .Add("lambda_std", 0.2, 0.01, 2.0, isLog=true) // single value
+    let parameters = Parameters.Empty
+                        .Add("lambda", Array.create numsp 5.0, 100.0, 200.0, isLog=true) // vector
+                        .Add("lambda_mean",[|50.0|], 100.0, 200.0, isLog=true) // single value
+                        .Add("lambda_std",[|1.0|], 0.2,  2.0, isLog=true) // single value
 
     // log-likelihood function takes data, parameters and computes log-likelihood
     let multispp (data:(int*float) seq) (p:Parameters) =
